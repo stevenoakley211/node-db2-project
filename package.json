@@ -1,13 +1,20 @@
 {
-    "name": "node-db2-challenge",
-    "version": "1.0.0",
-    "description": "Node DB 2 Module Challenge",
-    "main": "index.js",
-    "scripts": {
-        "server": "nodemon index.js"
-    },
-    "author": "Lambda School",
-    "devDependencies": {
-        "nodemon": "^2.0.2"
-    }
+  "name": "node-db2-project",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "server": "nodemon index.js"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "knex": "^0.21.1",
+    "morgan": "~1.9.1",
+    "nodemon": "^2.0.4",
+    "sqlite3": "^4.2.0"
+  }
 }
