@@ -7,8 +7,8 @@ router.get('/',(req, res)=>{
     .then(cars=>{
         res.status(200).json(cars)
     })
-    .catch(()=>{
-        res.status(500).json({error:'Server error'})
+    .catch(err=>{
+        res.status(500).json({message:'Server error',error:err.message})
     })
 })
 
@@ -24,5 +24,23 @@ router.post('/',(req,res)=>{
     res.status(500).json({ message: 'Could not add that car' });
   })
 })
+
+// Update
+router.put('/:id',(req, res) => {
+    const{item} = req.body;
+    db('cars')
+    .update({item})
+    .where('id',req.params.id)
+    .then(success =>{
+        if(!success){
+            res.status(404).json({error:"Couldnt find Car Listing to update"})
+        }
+        else{
+            res.status(200).json({message:"Successfully Updated Listing"})
+        }
+    })
+    .catch(err => res.status(500).json({error:err}))
+})
+// Delete
 
 module.exports = router;
