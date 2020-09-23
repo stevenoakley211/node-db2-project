@@ -27,7 +27,7 @@ router.post('/',(req,res)=>{
 
 // Update
 router.put('/:id',(req, res) => {
-    const{item} = req.body;
+    const {item} = req.body;
     db('cars')
     .update({item})
     .where('id',req.params.id)
@@ -42,5 +42,19 @@ router.put('/:id',(req, res) => {
     .catch(err => res.status(500).json({error:err}))
 })
 // Delete
+
+router.delete('/:id',(req,res) =>{
+    db('cars')
+    .delete()
+    .where('id',req.params.id)
+    .then(success => {
+        if(!success){
+            res.status(404).json({error:"Couldnt find Car listing to delete"})
+        }
+        else{
+            res.status(200).json({message:"Successfully deleted listing"})
+        }
+    })
+})
 
 module.exports = router;
